@@ -23,12 +23,12 @@ const flash = require("connect-flash");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
-const { Server } = require("http");
+ const { Server } = require("http");
 
 
 
 //MOGODB ATLUS Server
-const dbUrl = process.env.ATLAS_URL;
+const dbUrl = process.env.ATLASDB_URL;
 
 main()
 .then(() => {
@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 const store = MongoStore.create({
     mongoUrl: dbUrl, 
     crypto : {
-        secret: process.env.SECRET,
+        secret: process.env.SESSION_SECRET,
     },
     touchAfter: 24 * 3600, 
 });
@@ -64,7 +64,7 @@ store.on("error", () => {
 
 const sessionOptions = {
     store,
-    secret: process.env.SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false, 
     saveUninitialized: true,
 };
