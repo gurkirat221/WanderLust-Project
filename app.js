@@ -1,3 +1,5 @@
+console.log("AtlasDB_URL present :",!!process.env.ATLASDB_URL);
+console.log("Session_Secret present :",!!process.env.SESSION_SECRET);
 
 if (process.env.NODE_ENV != "production") {
     require("dotenv").config();
