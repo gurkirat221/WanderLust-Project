@@ -5,7 +5,7 @@ if (process.env.NODE_ENV != "production") {
     require("dotenv").config();
 } 
 
-
+const PORT = process.env.PORT || 8080;
 //basic database setup
 
 const express = require("express");
@@ -107,6 +107,6 @@ app.use((err, req, res, next) => {
 }); 
 
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
     console.log("server is listening to port 8080");
 });
